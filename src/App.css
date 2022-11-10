@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
   height: 100vh;
   width: 100vw;
@@ -19,5 +19,12 @@
   height: 100%;
   width: 100%;
   background-image: linear-gradient(to right bottom, #5576a8, #8695bd, #b2b6d2, #dadae8, #ffffff);
+}*/
+
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
 }
+
 
