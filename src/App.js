@@ -1,25 +1,30 @@
 import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/Navbar";
-
+import ListItemContainer from "./components/ListItemContainer";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
   return (
-    <NavBar/>
-    /*<div className="App">
-      <header>
-        <nav className="navBar"> 
-          <h1>MicroProblems</h1> 
-          <a href="#">Inicio</a>
-          <a href="#">Carrito</a>
-          <a href="#">Contacto</a>
-          <a href="#">Otras Paginas</a>
-        </nav>
-      </header>
-       <div className='body'>
-
-       </div>
-   </div>*/
+    <Router>
+      <div className="App flex-column">
+        <NavBar />
+        <div className="w-100 h-100" >
+          <Routes>
+            <Route
+              path="/"
+              element={<ListItemContainer greeting="Bienvenido" />}
+            />
+            <Route
+              path="/category/:id"
+              element={<ListItemContainer greeting="ItemsCategoria" />}
+            />
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
