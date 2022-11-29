@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { CartContext } from "../CartContext"
 
 const ItemCounter = ({item}) => {
-  const {addToCart, substractFromCart} = useContext(CartContext) 
+  const {addToCart, substractFromCart, getItemQuantity} = useContext(CartContext) 
   const onAdd = ()=>{
     addToCart(item)
   }
@@ -12,7 +12,7 @@ const ItemCounter = ({item}) => {
   return (
     <div className="fila">
       <button onClick={onSubstract}>-</button>
-      <span>5</span>
+      <span>{getItemQuantity(item.id)}</span>
       <button onClick={onAdd}>+</button>
     </div>
   )

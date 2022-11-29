@@ -11,17 +11,15 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     setCart([]);
   };
   const addToCart = (item) => {
-    console.log(item)
     if (isInCart(item.id)) {
       const cartCopy = [...cart];
       for (const element of cartCopy) {
         if (element.item.id === item.id) {
-          element.quantity = element.quantity++;
+          element.quantity++;
         }
       }
       setCart(cartCopy);
     } else {
-      console.log("else")
       setCart([
         ...cart,
         {
@@ -34,11 +32,11 @@ export const CartProvider = ({ defaultValue = [], children }) => {
 
   const substractFromCart = (item) => {
     if (isInCart(item.id)) {
-      const cartCopy = [...cart];
+      let cartCopy = [...cart];
       for (const element of cartCopy) {
         if (element.item.id === item.id) {
-          if (element.id.quantity > 1) {
-            element.quantity = element.quantity--;
+          if (element.quantity > 1) {
+            element.quantity--;
           } else {
             cartCopy = cartCopy.filter(i => i.item.id !== item.id)
            }
@@ -57,12 +55,30 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     setCart(newCart);
   };
 
+  const getItemQuantity = (id)=> {
+    if (isInCart(id)) {
+      return cart.find(i=>i.item.id === id).quantity
+    } else {
+      return 0
+    }
+  }
+
+  const getTotalPrice = ()=> { 
+    const total = cart.reduce((counter,  i) => {
+      return counter + i.item.price * i.quantity;
+    }, 0);
+  return total
+  }
+
+
   const context = {
     cart,
     clearCart,
     addToCart,
     removeFromCart,
     substractFromCart,
+    getItemQuantity,
+    getTotalPrice,
   };
 
   return <Provider value={context}>{children}</Provider>;
