@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ItemList from "../ItemList";
 
-const ListItemContainer = ({ greeting }) => {
+const ItemListContainer = () => {
   const params = useParams();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,30 +21,15 @@ const ListItemContainer = ({ greeting }) => {
       getProductos()
   },[params.id])
 
-  /*fetch(url)
-    .then((res) => res.json())
-    .then((json) => {
-      setItems(json);
-      setLoading(false);
-    });*/
-
   return (
     <div>
-      {greeting}
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div>
-          {items.map((i) => (
-            <div key={i.id}>
-              <h3>{i.title}</h3>
-              <Link to={`/item/${i.id}`}>ver detalles</Link>
-            </div>
-          ))}
-        </div>
+        <ItemList items={items}/>
       )}
     </div>
   );
 };
 
-export default ListItemContainer;
+export default ItemListContainer;
