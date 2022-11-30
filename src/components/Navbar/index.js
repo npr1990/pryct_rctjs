@@ -1,28 +1,16 @@
-import React, { useState } from "react";
 import Cart from "../Cart";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
 
   return (
-    <header className="w-100 h-100">
-      <nav className="navbar-expand-md navbar-dark bg-dark d-flex flex-row">
+    <header className="w-100">
+      <nav className="navbar-expand-md navbar-dark bg-dark d-flex flex-row px-3">
         <Link  className="navbar-brand" to="/">
           MicroProblems
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarsExample03"
-          aria-controls="navbarsExample03"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarsExample03">
-          <ul className="navbar-nav me-auto mb-2 mb-sm-0">
+        <div className="d-flex flex-row justify-content-between w-100 align-items-center">
+          <ul className="navbar-nav d-flex flex-row">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/category/electronics">
                 Electronics
@@ -34,7 +22,7 @@ const NavBar = () => {
               </Link>
             </li>
           </ul>
-          <Cart />
+          <Cart/>
         </div>
       </nav>
     </header>

@@ -67,7 +67,7 @@ export const CartProvider = ({ defaultValue = [], children }) => {
     const total = cart.reduce((counter,  i) => {
       return counter + i.item.price * i.quantity;
     }, 0);
-  return total
+  return total.toFixed(2)
   }
 
 

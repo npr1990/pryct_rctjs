@@ -1,16 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../CartContext";
-import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 
 const Cart = () => {
-  const { cart, clearCart, removeFromCart } = useContext(CartContext);
+  const { cart} = useContext(CartContext);
 
+  const total = cart.reduce((counter,  i) => {
+    return counter + i.quantity;
+  }, 0);
   return (
     <div>
-      <Link to="/cart">ver detalles</Link>
-      <i className="bi bi-cart" style={{ color: "white" }}></i>
-      <span style={{ color: "white" }}>{cart.length}</span>
+      <Link to="/cart" className="">
+      <i className="bi bi-cart cart" style={{ color: "white" }}></i>
+      <span className="" style={{ color: "white" }}>{total}</span></Link>
     </div>
   );
 };

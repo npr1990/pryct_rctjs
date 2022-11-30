@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { CartContext } from "../CartContext"
+import "./itemCounter.css";
 
 const ItemCounter = ({item}) => {
   const {addToCart, substractFromCart, getItemQuantity} = useContext(CartContext) 
@@ -10,10 +11,10 @@ const ItemCounter = ({item}) => {
     substractFromCart(item)
   }
   return (
-    <div className="fila">
-      <button onClick={onSubstract}>-</button>
-      <span>{getItemQuantity(item.id)}</span>
-      <button onClick={onAdd}>+</button>
+    <div className="d-flex flex-row">
+      <button className="btn btn-primary h-100" onClick={onSubstract}>-</button>
+      <span className="counter" >{getItemQuantity(item.id)}</span>
+      <button className="btn btn-primary h-100" onClick={onAdd}>+</button>
     </div>
   )
 }
